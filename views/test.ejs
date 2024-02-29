@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/test.css">
+</head>
+<body>
+    <div class="position-relative">
+        <div class="top-color-div"></div>
+        <div class="position-absolute abs-question-text-box  rounded-4 shadow-lg">
+            <div class="position-absolute question-test-text">
+                <p><%= currentWord %></p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="position-absolute mic-voice">
+        <button id="recordToggle" class="border border-0" style="background-color: white;border-radius: 50%;">
+            <img id="imgg" src="/microphone.png" alt="Microphone" >
+        </button>
+        <p id="recordingtext">Start Recording</p>
+    </div>
+    
+
+    <audio id="audioPlayer" controls style="display: none;"></audio>
+
+    <div class="position-absolute ninde d-flex justify-content-center">
+        <div class="mx-2">
+            <div class="prev-next-button  rounded-4 position-relative">
+                <a href="/test/<%= testNo %>/<%= wordNo + 1 %>">
+                    <p class="position-absolute text" style="color: white;"> Next > </p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socketio.js"></script>
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const recordToggleBtn = document.getElementById('recordToggle');
+            const audioPlayer = document.getElementById('audioPlayer');
+
+            const recodingtext = document.getElementById('recordingtext');
+            const micimg = document.getElementById('imgg');
+
+
+
+            let recorder;
+            let socket = io();
+            let isRecording = false;
+
+            recordToggleBtn.addEventListener('click', () => {
+                if (!isRecording) {
+                    startRecording();
+                    recodingtext.textContent = 'Stop Recording';
+                    micimg.classList.add('clicked');
+
+                } else {
+                    stopRecording();
+                    recodingtext.textContent = 'Start Recording';
+                    micimg.classList.remove('clicked');
+                }
+            });
+
+            function startRecording() { 
+                isRecording = true;
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then((stream) => {
+                        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        const input = audioContext.createMediaStreamSource(stream);
+
+                        recorder = new Recorder(input);
+                        recorder.record();
+
+                        socket.emit('audio', 'start');
+                    })
+                    .catch((err) => {
+                        console.error('Error accessing microphone:', err);
+                    });
+            }
+
+            function stopRecording() {
+                isRecording = false;
+                recorder.stop();
+
+                recorder.exportWAV((blob) => {
+                    // Create a Blob URL for the recorded audio
+                    const audioURL = URL.createObjectURL(blob);
+
+                    // Set the audio player source and play the audio
+                    audioPlayer.src = audioURL;
+                    //audioPlayer.play();
+
+                    // You can also send the audio blob to the server for further processing/storage
+                    const formData = new FormData();
+                    formData.append('audio', blob, 'audio.wav');
+
+                    fetch('/upload', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then((response) => {
+                        console.log('Audio uploaded successfully');
+                    })
+                    .catch((error) => {
+                        console.error('Error uploading audio:', error);
+                    });
+                });
+
+                recorder.clear();
+                socket.emit('audio', 'stop');
+
+            }
+        });
+    </script>
+</body>
+</html>

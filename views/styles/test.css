@@ -1,0 +1,89 @@
+.top-color-div{
+    height: 45vh;
+    background-color:#c45ade;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+
+}
+.abs-question-text-box{
+    height: 150px;
+    width: 70%;
+    background-color: white;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-color: black;
+    
+}
+
+.question-test-text{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 290%;
+}
+.prev-next-button{
+        height: 50px;
+        width: 135px;
+        border: 1px solid #c45ade;
+        border-color: #c45ade;
+        background-color: #c45ade;
+        color: white;
+
+
+}
+
+
+.prev-next-button .text{
+  top: 25%;
+  left: 32%;
+  font-weight: 700;
+}
+.mic-voice{
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.mic-voice img{
+    height: 80px;
+}
+
+.click-recording-info{
+    width: 270px;
+    left: -90%;
+}
+
+
+.ninde{
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+a :hover{
+    
+    background-color:#c45ade;
+    border-radius: 43px;
+}
+
+
+
+
+#recordToggle :hover{
+    
+    background-color:#c45ade;
+    border-radius: 43px;
+}
+
+
+.clicked {
+    /* Add your styles for the clicked state here */
+    background-color:#c45ade ; /* For example */
+    border-radius: 50%;
+    border: 0px;
+}
+
+button:hover {
+            background-color: #9f27ae; /* Darker purple color on hover */
+        }

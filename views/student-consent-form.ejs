@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #c45ade;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: #c45ade;
+        }
+    </style>
+
+<script>
+    function enableNextButton() {
+        var checkbox1 = document.getElementById('checkbox1');
+        var checkbox2 = document.getElementById('checkbox2');
+        var nextButton = document.getElementById('nextButton');
+        var errorMessage = document.getElementById('errorMessage');
+
+        if (checkbox1.checked && checkbox2.checked) {
+            nextButton.disabled = false;
+            errorMessage.style.display = 'none';
+        } else {
+            nextButton.disabled = true;
+            errorMessage.style.display = 'block';
+        }
+    }
+</script>
+</head>
+<body>
+    <div class="container">
+        <h2>STANFORD UNIVERSITY CONSENT FORM</h2>
+
+        <p><strong>PURPOSE OF THE STUDY</strong><br>
+            Data collected through games in the web-browser will help researchers understand relationships between academic skills, reading proficiency, cognition, perception, and/or attitudes towards reading and school in individuals with a broad range of reading skills.</p>
+    
+            <p><strong>STUDY PROCEDURES</strong><br>
+            In this study, you will be asked to complete computer tasks via a computer screen. Audio will be presented via headphones or speakers.</p>
+    
+            <p><strong>PRIVACY AND DATA COLLECTION</strong><br>
+            We will do our best to ensure your privacy. Data that is collected through this online experiment is stored separately from identifying information such as your name. For the sake of payment, sometimes we store an email address you provide, but this is stored separately from the responses that are recorded in the online experiment. Each participant is assigned a code and that is used rather than names. This is called “coded data” and we try to ensure that the identity of our research participants is kept confidential. Data collected as part of this study may be used for many years to help discover trends in the population and explore changes due to development and education. In addition, coded data may be shared online or with collaborators to allow for new and unforeseen discoveries. Researchers may choose to include coded data in publications to support findings, or they may choose to release coded data alongside findings for replicability.</p>
+    
+            <p><strong>COMPENSATION</strong><br>
+            Participation in this study is voluntary and you will not receive financial compensation.</p>
+    
+            <p><strong>RISKS, STRESS, OR DISCOMFORT</strong><br>
+            If there is any reason to believe you are not safe to participate in any of the tasks, please contact us at <a href="mailto:readingresearch@stanford.edu">readingresearch@stanford.edu</a>. Some people may experience some physical discomfort or boredom due to being asked to sit for long periods. For computer tasks, some people may also experience dry eyes or eye fatigue. For some tasks that are untimed, breaks can be taken as needed during the session.</p>
+    
+            <p><strong>CONTACT INFORMATION</strong><br>
+            If you have any additional questions or concerns about our research, feel free to email us at <a href="mailto:readingresearch@stanford.edu">readingresearch@stanford.edu</a>. We will be more than happy to help!</p>
+    
+            <p>For general information regarding questions or concerns about [your/your child’s] rights as a research participant, please call 1-866-680-2906 to reach the Administrative Panel on Human Subjects in Medical Research, Stanford University.</p>
+    
+
+        <p>
+            <label>
+                <input type="checkbox" id="checkbox1" onchange="enableNextButton()" required>
+                I agree to participate in this research. Participation in this research is voluntary, and I can stop at any time without penalty.
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="checkbox" id="checkbox2" onchange="enableNextButton()" required>
+                I feel that I understand what I am getting into, and I know I am free to leave the experiment at any time by simply closing the web browser.
+            </label>
+        </p>
+
+
+        <p id="errorMessage" style="color: red; ">Please check both checkboxes before proceeding.</p>
+
+        <form action="/student/home" method="get">
+            <button type="submit" id="nextButton" disabled>Next</button>
+        </form>
+    </div>
+</body>
+ <script>
+        function validateAndSubmit() {
+            var checkbox1 = document.getElementById('checkbox1');
+            var checkbox2 = document.getElementById('checkbox2');
+
+            if (checkbox1.checked && checkbox2.checked) {
+                // If both checkboxes are checked, submit the form
+                document.forms[0].submit();
+            } else {
+                // If not, display an error message
+                var errorMessage = document.getElementById('errorMessage');
+                errorMessage.style.display = 'block';
+            }
+        }
+    </script>
+</html>

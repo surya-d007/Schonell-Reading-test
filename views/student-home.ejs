@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test List</title>
+    
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 30px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* List Styles */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* ListItem Styles */
+        li {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            width: 400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Button Styles */
+        button {
+            background-color: #c45ade;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .title{
+            padding-left: 20px;
+            padding-bottom: 10px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- List of Tests -->
+    <ul>
+        <h3 class="title">Schonell Reading test</h3>
+        <% AllTests.sort((a, b) => a.testno - b.testno).forEach(test => { %>
+            <!-- Individual Test Item -->
+            <li>
+                <!-- Test Number and Words on the left -->
+                <div>
+                    <strong>Test Number:</strong> <%= test.testno %>
+                    <!-- <strong>Words:</strong> <%= test.words.join(', ') %> -->
+                </div>
+                <!-- Take Test Button on the right -->
+                <button onclick="takeTest('<%= test.testno %>')">Take Test</button>
+            </li>
+        <% }); %>
+    </ul>
+
+    <!-- JavaScript Function to Redirect to Test Page -->
+    <script>
+        function takeTest(testno) {
+            // Redirect to the test page with the specific test number
+            window.location.href = "/test/" + testno + "/0";
+        }
+    </script>
+</body>
+</html>
