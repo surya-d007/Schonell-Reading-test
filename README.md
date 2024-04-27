@@ -1,24 +1,20 @@
 # Schonell Reading Test Application
 
-## Introduction
-This application is designed to administer the Schonell Reading Test, providing a tool for individuals, particularly those with dyslexia, to assess their reading age. The application utilizes Microsoft Speech to Text services to transcribe audio recordings of the test.
-
-## Features
-- User Registration: Users can register their Unique ID along with their date of birth to access the test.
-- Test Administration: Users can take the Schonell Reading Test, with each word being transcribed and evaluated for correctness.
-- Test Results: Upon completion of the test, users receive their reading age based on their performance.
-- Admin Panel: Administrators can manage tests, including creating and deleting them.
+## Description
+The Schonell Reading Test Application is a server-side application designed to administer and process the Schonell Reading Test for dyslexic individuals. It utilizes Microsoft Speech to Text service for converting audio recordings of test responses into text for analysis. The application manages user registration, login, test administration, and scoring.
 
 ## Technologies Used
-- Node.js: Backend runtime environment for JavaScript.
-- Express.js: Web application framework for Node.js.
-- MongoDB: NoSQL database used for storing user data and test details.
-- Microsoft Cognitive Services: Utilized for Speech to Text functionality.
-- HTML/CSS/JavaScript: Frontend development technologies.
-- EJS: Templating language for rendering HTML pages dynamically.
-- Multer: Middleware for handling file uploads.
-- Socket.IO: Library for real-time, bidirectional communication between web clients and servers.
-- Mongoose: MongoDB object modeling for Node.js.
+- **Node.js**: Backend runtime environment for JavaScript.
+- **Express.js**: Web application framework for Node.js.
+- **MongoDB**: NoSQL database used for storing user data and test details.
+- **Microsoft Cognitive Services**: Utilized for Speech to Text functionality.
+- **HTML/CSS/JavaScript**: Frontend development technologies.
+- **EJS**: Templating language for rendering HTML pages dynamically.
+- **Multer**: Middleware for handling file uploads.
+- **Socket.IO**: Library for real-time, bidirectional communication between web clients and servers.
+- **Mongoose**: MongoDB object modeling for Node.js.
+
+  
 
 ## Setup Instructions
 1. **Clone the repository:**
@@ -49,17 +45,30 @@ This application is designed to administer the Schonell Reading Test, providing 
 
 5. **Access the application:**
     - Open your web browser and navigate to `http://localhost:3000`.
-## Usage
-- Navigate to the application homepage.
-- Register or log in using your Unique ID.
-- Complete the Schonell Reading Test by following the instructions provided.
-- View your test results to determine your reading age.
 
-## Contribution Guidelines
-- Fork the repository.
-- Make your changes and create a new branch for your feature or fix.
-- Commit your changes and push them to your fork.
-- Submit a pull request detailing the changes made and any relevant information.
+## Usage
+1. **Registration:**
+    - Navigate to `/student/registration` route.
+    - Enter your Unique User ID and Date of Birth to register.
+  
+2. **Login:**
+    - Once registered, navigate to `/login`.
+    - Enter your Unique User ID to log in.
+  
+3. **Test Administration:**
+    - After logging in, navigate to the test administration section `/student/home`.
+    - Start the test by clicking on the respective test link.
+  
+4. **Test Scoring:**
+    - Test results are calculated automatically after completion.
+    - Scores are saved to the user's profile in the database.
+  
+5. **Admin Features:**
+    - Admins can log in at `/admin/login` and access the admin dashboard at `/admin/home`.
+    - Admins can create new tests, view existing tests, and delete tests from the dashboard.
+
+## Contributing
+Contributions are welcome! Please feel free to submit issues and pull requests.
 
 ## License
-[MIT License](LICENSE)
+This project is licensed under the [MIT License](LICENSE).
