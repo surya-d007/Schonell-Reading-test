@@ -21,14 +21,34 @@ This application is designed to administer the Schonell Reading Test, providing 
 - Mongoose: MongoDB object modeling for Node.js.
 
 ## Setup Instructions
-1. Clone the repository to your local machine.
-2. Install Node.js and MongoDB if not already installed.
-3. Run `npm install` to install the required dependencies.
-4. Set up environment variables by creating a `.env` file in the root directory and adding the necessary configurations (e.g., MongoDB connection string, Microsoft Speech subscription key).
-5. Ensure MongoDB is running locally or update the connection string to point to your MongoDB instance.
-6. Run `npm start` to start the server.
-7. Access the application via `http://localhost:<PORT>` in your web browser.
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/surya-d007/Notes-app-Node.js.git
+    ```
 
+2. **Install dependencies:**
+    ```bash
+    cd notes-application
+    cd server
+    npm install
+    ```
+
+3. **Configure environment variables:**
+    - Create a `.env` file in the server directory.
+    - Add the following variables:
+        ```plaintext
+        PORT=3000
+        MONGO_KEY=<your-mongodb-uri>
+        SPEECH=<microsoft-speechto-text-Key>
+        ```
+
+4. **Start the server:**
+    ```bash
+    npm start
+    ```
+
+5. **Access the application:**
+    - Open your web browser and navigate to `http://localhost:3000`.
 ## Usage
 - Navigate to the application homepage.
 - Register or log in using your Unique ID.
