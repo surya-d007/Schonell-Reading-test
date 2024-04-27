@@ -23,12 +23,12 @@ This application is designed to administer the Schonell Reading Test, providing 
 ## Setup Instructions
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/surya-d007/Notes-app-Node.js.git
+    git clone https://github.com/surya-d007/Schonell-Reading-test.git
     ```
 
 2. **Install dependencies:**
     ```bash
-    cd notes-application
+    cd Schonell-Reading-test
     cd server
     npm install
     ```
