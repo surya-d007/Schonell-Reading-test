@@ -45,6 +45,44 @@ The Schonell Reading Test Application is a server-side application designed to a
 
 5. **Access the application:**
     - Open your web browser and navigate to `http://localhost:3000`.
+  
+
+## Endpoints
+
+1. **POST /upload**: Handles audio file upload, speech recognition, and updates user data.
+
+2. **GET /login**: Renders the login page for user authentication.
+
+3. **GET /student/registration**: Renders the student registration page.
+
+4. **POST /student/registration**: Handles student registration and saves data to the database.
+
+5. **POST /student/login**: Handles student login authentication.
+
+6. **GET /student/form**: Renders the student consent form page.
+
+7. **GET /student/home**: Renders the student dashboard page with test details.
+
+8. **GET /user/dashboard**: Fetches and renders the user's test details and scores.
+
+9. **GET /test/:testNo/:wordNo**: Handles fetching and rendering test data for a specific test and word.
+
+10. **GET /test-results**: Renders the test results page with user scores.
+
+11. **POST /admin/login**: Handles admin login authentication.
+
+12. **GET /admin/registration**: Renders the admin registration page.
+
+13. **POST /admin/registration**: Handles admin registration and saves data to the database.
+
+14. **GET /admin/home**: Renders the admin dashboard page with existing tests.
+
+15. **POST /admin/create-test**: Creates a new test and adds it to the database.
+
+16. **POST /admin/delete-test/:testno**: Deletes a test from the database based on the test number.
+
+17. **GET /sample**: Renders a sample test page.
+
 
 ## Usage
 1. **Registration:**
