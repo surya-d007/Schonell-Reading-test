@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test <%= testNo  %> </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Light gray background color */
+        }
+        
+        .content {
+            max-width: 380px;
+            width: 100%;
+            padding: 60px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center; /* Center-align items horizontally */
+            align-items: center; /* Center-align items vertically */
+        }
+
+        .word-number, .correct-word, .answer {
+            flex: 1; /* Equal width for all elements */
+            text-align: center; /* Center-align text */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #c45ade; /* Purple button color */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 4px; /* Rounded corners for button */
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth hover effect */
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #9f27ae; /* Darker purple color on hover */
+        }
+
+        /* Style for wrong answer */
+        .wrong {
+            color: red;
+        }
+
+        /* Style for correct answer */
+        .correct {
+            color: green;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .content, .content * {
+                visibility: visible;
+            }
+            .content {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2>Test <%= testNo %>  Results</h2>
+        <ul>
+            <% userarray.forEach((value, index) => { %>
+                <% var ans;
+                    if(value == 0) {
+                        ans = "wrong";
+                    } else {
+                        ans = "correct";
+                    } %>
+                <li>
+                    <span class="word-number">Word <%= index + 1 %>:</span>
+                    <span class="correct-word"><%= correctarray[index] %></span>
+                    <span class="answer <%= ans %>"><%= ans %></span>
+                </li>
+            <% }); %>
+        </ul>
+        <form action="/student/home" method="get">
+            <button type="submit">Home</button>
+            <button onclick="printPage()">Download Results (PDF)</button>
+        </form>
+    </div>
+
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
